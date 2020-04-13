@@ -1,18 +1,26 @@
-/* parcel_app/src/scss/main.scss */
+/* main.scss */
 
-@import "config";
+@import "_config";
 
-h1 {
-  color: $color-primary;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@mixin default-box($width, $height: 150px) {
+  width: $width;
+  height: $height;
+  background-color: $color-primary;
+
+  border: {
+    width: 1px;
+    style: solid;
+    color: black;
+    radius: 5px;
+  }
+}
+
+body {
+  background-color: beige;
 }
 
 .box {
-  width: 300px;
-  height: 300px;
-  background-color: #42b883;
+  @include default-box(300px, 300px);
   display: grid;
   place-items: center;
 
@@ -24,4 +32,13 @@ h1 {
       color: black;
     }
   }
+}
+
+.button-box {
+  @include default-box(100px);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
 }
