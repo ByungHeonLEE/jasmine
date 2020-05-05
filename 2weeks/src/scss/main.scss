@@ -1,44 +1,62 @@
 /* main.scss */
-
-@import "_config";
-
-@mixin default-box($width, $height: 150px) {
-  width: $width;
-  height: $height;
-  background-color: $color-primary;
-
+.picture {
+  place-items: center;
+  display: grid;
+}
+.header {
+  position: fixed;
+}
+.explain {
+  margin-top: 100px;
+}
+.purple {
+  background-color: purple;
+  color: white;
+  width: 200px;
   border: {
+    radius: 10px;
+  }
+  place-items: center;
+}
+.main {
+  display: grid;
+  grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-gap: 10px;
+  place-items: center;
+}
+.fc {
+  place-items: center;
+  display: grid;
+  width: 1100px;
+}
+
+@mixin default-box($size, $height) {
+  width: $size;
+  height: $height;
+  display: grid;
+  border: {
+    radius: 10px;
     width: 1px;
     style: solid;
     color: black;
-    radius: 5px;
   }
-}
-
-body {
-  background-color: beige;
-}
-
-.box {
-  @include default-box(300px, 300px);
-  display: grid;
-  place-items: center;
-
-  a {
-    color: white;
-    font-size: 40px;
-
-    &:visited {
-      color: black;
-    }
-  }
-}
-
-.button-box {
-  @include default-box(100px);
   cursor: pointer;
-  display: flex;
+}
+.box {
+  @include default-box(400px, 50px);
+  grid-template-rows: repeat(3, fr);
+}
+
+.orange {
   justify-content: center;
-  align-items: center;
-  font-size: 10px;
+  place-items: center;
+  width: 100px;
+  display: flex;
+  border: {
+    radius: 5px;
+    width: 1px;
+    style: solid;
+    color: black;
+  }
 }

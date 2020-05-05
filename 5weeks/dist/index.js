@@ -126,13 +126,27 @@ class Person2 {
     introduce() {
         return `Hello, I'm a ${this.name}, ${this.age}, ${this.gender}`;
     }
+    get getAge() {
+        return `${this.age}살`;
+    }
+    set setAge(age) {
+        if (age > 0)
+            this.age = age;
+        else
+            console.log("NO");
+    }
 }
 const person2 = new Person2("bumsu", 25, "man");
 console.log(person2.name);
+console.log(person2.getAge);
+person2.setAge = 27;
+console.log(person2.getAge);
+person2.setAge = -1;
+console.log(person2.getAge);
 /* end: 6 */
 //
 /* 7. readonly, static */
-// console.log("\n\n7. readonly, static\n");
+console.log("\n\n7. readonly, static\n");
 //readonly
 class Person3 {
     constructor(name) {
@@ -142,25 +156,89 @@ class Person3 {
     }
 }
 const person3 = new Person3("Jasmine");
+console.log(person3.name);
+console.log(person3.created);
+// person3.created = new Date(); 읽기전용이나까 public이라도 바꿀 수 가 없음
 //static
 class Bungeoppang {
-    //static 속성
     constructor(taste) {
         this.taste = taste;
         this.taste = taste;
+        Bungeoppang.count++;
+    }
+    //static 메소드
+    static getCount() {
+        return Bungeoppang.count;
     }
 }
+//static 속성
+Bungeoppang.count = 0;
+console.log(Bungeoppang.getCount());
 const bungeoppang1 = new Bungeoppang("red bean");
+console.log(Bungeoppang.getCount());
 const bungeoppang2 = new Bungeoppang("cream");
+console.log(Bungeoppang.getCount());
 const bungeoppang3 = new Bungeoppang("sweet potato");
+console.log(Bungeoppang.getCount());
 /* end: 7 */
 //
 /* 8. Abstract Class */
-// console.log("\n\n8. Abstract Class\n");
+console.log("\n\n8. Abstract Class\n");
 class Singer {
     constructor(name) {
         this.name = name;
         this.name = name;
     }
 }
+class Ballader extends Singer {
+    sing() {
+        console.log("Na ~~ Nana~");
+    }
+}
+const ballader = new Ballader("park hyo shin");
+ballader.sing();
+class TrotSinger extends Singer {
+    sing() {
+        console.log("La ~~ lala~");
+    }
+}
+const trotSinger = new TrotSinger("Tae jhin ah");
+trotSinger.sing();
+const singers = [ballader, trotSinger];
+singers.forEach((singer) => {
+    singer.sing();
+});
+/* end: 8 */
+//
+/* 9. Interface */
+console.log("\n\n9. Interface\n");
+const sum = (base, increase) => {
+    return base + increase;
+};
+const sum2 = (base, increase) => {
+    return base + increase;
+};
+//class 를 상속받을 때는 extends, interface를 상속받을 때는 ㅑmplements
+class HouseDog extends Singer {
+    constructor(species, age, name, master) {
+        super(name);
+        this.species = species;
+        this.age = age;
+        this.name = name;
+        this.master = master;
+        this.species = species;
+        this.age = age;
+        this.master = master;
+    }
+    sing() {
+        console.log("wall wall");
+    }
+    hello() {
+        console.log(`hello i'm ${this.species}`);
+    }
+}
+const housedog = new HouseDog("Dog", 25, "kong", "Honey");
+housedog.hello();
+housedog.sing();
+//추상 클래스를 받아오면 추상 메소드를 반드시 갖고와라
 /* end: 9 */
