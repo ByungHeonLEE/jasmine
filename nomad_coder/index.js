@@ -6,8 +6,9 @@ function handleClick() {
   title.classList.toggle(CLICKED_CLASS);
 }
 
-function inita() {
+function ainita() {
   title.addEventListener("click", handleClick);
+  //title
 }
 
-inita();
+ainita();
