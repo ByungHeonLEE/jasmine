@@ -12,3 +12,5 @@ function ainita() {
 }
 
 ainita();
+
+console.log(!undefined == true);
