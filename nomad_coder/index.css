@@ -1,4 +1,4 @@
-h1 {
+body {
   color: indigo;
   transition: color 0.5s ease-in-out;
 }
@@ -9,4 +9,13 @@ h1 {
 
 .btn {
   cursor: pointer;
+}
+
+.form,
+.greetings {
+  display: none;
+}
+
+.showing {
+  display: block;
 }
