@@ -14,7 +14,7 @@
     "autoprefixer": "^9.7.6",
     "babel-preset-env": "^1.7.0",
     "core-js": "^3.6.5",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "postcss-preset-env": "^6.7.0"
   },
   "postcss": {
